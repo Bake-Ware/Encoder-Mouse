@@ -1,4 +1,3 @@
-
 #include "PluggableUSBHID.h"
 //#include "USBKeyboard.h"
 #include "USBMouse.h"
@@ -7,21 +6,23 @@
 USBMouse Mouse;
 //USBKeyboard Keyboard;
 // Rotary Encoder Inputs
-#define CLK 2
-#define DT 3
+#define CLK 7
+#define DT 8
 
-#define CLK2 7
-#define DT2 8
+#define CLK2 2
+#define DT2 3
 
 //switches
-#define SW1 4
-#define SW2 9
+#define SW1 9
+#define SW2 15
 #define SW3 5
 #define SW4 13
 #define SW5 14
-#define SW6 15
-#define SW7 10
+#define SW6 12
+#define SW7 4
 #define SW8 11
+
+int millsThreshold = 25;
 
 int counter = 0;
 int currentStateCLK;
@@ -39,7 +40,7 @@ String currentDir2 ="";
 
 
 int counterS = 1;
-int counterF = 3;
+int counterF = 7;
 int currentStateCLKS;
 int lastStateCLKS;
 String currentDirS ="";
@@ -52,7 +53,7 @@ unsigned long lastButtonPress5 = 0;
 unsigned long lastButtonPress6 = 0;
 unsigned long lastButtonPress7 = 0;
 unsigned long lastButtonPress8 = 0;
-
+unsigned long lastMoveTime = 0;
 int lastButtonState1;
 int lastButtonState2;
 int lastButtonState3;
@@ -66,6 +67,9 @@ int scrollCounter = 0;
 
 int xCount = 0;
 int yCount = 0;
+
+int accellThreshold1 = 10;
+int accellThreshold2 = 2;
 
 void setup() {
   digitalWrite(LED_BUILTIN, HIGH);
@@ -113,7 +117,15 @@ void setup() {
 
 int getCursorSpeed()
 {
-  return slowMo ? counterS : counterF;
+  int amount = slowMo ? counterS : counterF;
+  int gap = millis() - lastMoveTime;
+  if(gap < accellThreshold1)
+  {
+    int multiplier = accellThreshold1 - gap;
+    amount = amount*multiplier;
+  }
+  lastMoveTime = millis();
+  return amount;
 }
 
 void doScroll(int pos)
@@ -131,7 +143,9 @@ void doScroll(int pos)
   }
 }
 
-void updateY() {
+void updateXY() {
+  int yVal = 0;
+  int xVal = 0;
   if ((currentStateCLK2 != lastStateCLK2  && currentStateCLK2 == 1))
   {
     if (digitalRead(DT2) != currentStateCLK2) {
@@ -139,22 +153,37 @@ void updateY() {
       {
         doScroll(1);
       } else {
-        Mouse.move(0,getCursorSpeed());
+        yVal = getCursorSpeed();
+        //Mouse.move(0,0-getCursorSpeed());
       }
     } else {
       if(scrollMode)
       {
         doScroll(-1);
       } else {
-        Mouse.move(0,0-getCursorSpeed());
+        yVal = 0-getCursorSpeed();
+        //Mouse.move(0,getCursorSpeed());
       }
     }
   }
-}
-//void updateX(uint gpio, uint32_t events) {
-void updateX() {
   if (currentStateCLK != lastStateCLK  && currentStateCLK == 1){
-    (digitalRead(DT) != currentStateCLK) ? Mouse.move(getCursorSpeed(),0) : Mouse.move(0-getCursorSpeed(),0);
+    if(digitalRead(DT) != currentStateCLK) { 
+      xVal = getCursorSpeed();
+      //Mouse.move(getCursorSpeed(),0) 
+      }
+    else { 
+      xVal = 0-getCursorSpeed();
+      //Mouse.move(0-getCursorSpeed(),0); 
+      }
+  }
+  if(xVal != 0 || yVal != 0) 
+  {
+    Serial.print("X = ");
+    Serial.print(xVal);
+    Serial.print(" Y = ");
+    Serial.println(yVal);
+    Mouse.move(xVal,yVal);
+    delay(1);
   }
 }
 
@@ -162,8 +191,9 @@ void loop() {
   
   currentStateCLK = digitalRead(CLK); 
   currentStateCLK2 = digitalRead(CLK2); 
-  updateX();
-  updateY();
+  //updateX();
+  //updateY();
+  updateXY();
   lastStateCLK = currentStateCLK;
   lastStateCLK2 = currentStateCLK2;
 
@@ -181,7 +211,7 @@ void loop() {
   //If we detect LOW signal, button is pressed
   
   if (btnState1 != lastButtonState1) {
-    if (millis() - lastButtonPress1 > 50) {
+    if (millis() - lastButtonPress1 > millsThreshold) {
       btnState1 == LOW ? Mouse.press(MOUSE_MIDDLE) : Mouse.release(MOUSE_MIDDLE);  
       Serial.write("1");
       lastButtonState1 = btnState1;
@@ -189,7 +219,7 @@ void loop() {
     lastButtonPress1 = millis();
   }
   if (btnState2 != lastButtonState2) {
-    if (millis() - lastButtonPress2 > 50) {
+    if (millis() - lastButtonPress2 > millsThreshold) {
       scrollMode = btnState2 == LOW;  
       Serial.write("2");
       lastButtonState2 = btnState2;
@@ -197,7 +227,7 @@ void loop() {
     lastButtonPress2 = millis();
   }
   if (btnState3 != lastButtonState3) {
-    if (millis() - lastButtonPress3 > 50) {
+    if (millis() - lastButtonPress3 > millsThreshold) {
       slowMo = btnState3 != LOW;
       Serial.write("3");
       lastButtonState3 = btnState3;
@@ -205,23 +235,31 @@ void loop() {
     lastButtonPress3 = millis();
   }
   if (btnState4 != lastButtonState4) {
-    if (millis() - lastButtonPress4 > 50) {
-      slowMo = btnState4 != LOW;
-      Serial.write("4");
+    if (millis() - lastButtonPress4 > millsThreshold) {
+      if(btnState4 == 0)
+      {
+        accellThreshold1 = accellThreshold1+1;
+        Serial.print("accellThreshold1: ");
+        Serial.println(accellThreshold1);
+      }
       lastButtonState4 = btnState4;
     }
     lastButtonPress4 = millis();
   }
   if (btnState5 != lastButtonState5) {
-    if (millis() - lastButtonPress5 > 50) {
-      slowMo = btnState5 != LOW;
-      Serial.write("5");
+    if (millis() - lastButtonPress5 > millsThreshold) {
+      if(btnState5 == 0)
+      {
+        accellThreshold1 = accellThreshold1-1;
+        Serial.print("accellThreshold1: ");
+        Serial.println(accellThreshold1);
+      }
       lastButtonState5 = btnState5;
     }
     lastButtonPress5 = millis();
   }
   if (btnState6 != lastButtonState6) {
-    if (millis() - lastButtonPress6 > 50) {
+    if (millis() - lastButtonPress6 > millsThreshold) {
       btnState6 == LOW ? Mouse.press(MOUSE_RIGHT) : Mouse.release(MOUSE_RIGHT);  
       Serial.write("6");
       lastButtonState6 = btnState6;
@@ -229,7 +267,7 @@ void loop() {
     lastButtonPress6 = millis();
   }
   if (btnState7 != lastButtonState7) {
-    if (millis() - lastButtonPress7 > 50) {
+    if (millis() - lastButtonPress7 > millsThreshold) {
       btnState7 == LOW ? Mouse.press(MOUSE_LEFT) : Mouse.release(MOUSE_LEFT);  
       Serial.write("7");
       lastButtonState7 = btnState7;
@@ -237,7 +275,7 @@ void loop() {
     lastButtonPress7 = millis();
   }
   if (btnState8 != lastButtonState8) {
-    if (millis() - lastButtonPress8 > 50) {
+    if (millis() - lastButtonPress8 > millsThreshold) {
       slowMo = btnState8 != LOW;
       Serial.write("8");
       lastButtonState8 = btnState8;
