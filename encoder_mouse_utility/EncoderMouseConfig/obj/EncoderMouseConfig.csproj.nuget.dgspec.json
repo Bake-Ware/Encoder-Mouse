@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jamix\\OneDrive\\Documents\\GitHub\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\EncoderMouseConfig.csproj": {}
+    "L:\\Source\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\EncoderMouseConfig.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jamix\\OneDrive\\Documents\\GitHub\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\EncoderMouseConfig.csproj": {
+    "L:\\Source\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\EncoderMouseConfig.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jamix\\OneDrive\\Documents\\GitHub\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\EncoderMouseConfig.csproj",
+        "projectUniqueName": "L:\\Source\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\EncoderMouseConfig.csproj",
         "projectName": "EncoderMouseConfig",
-        "projectPath": "C:\\Users\\jamix\\OneDrive\\Documents\\GitHub\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\EncoderMouseConfig.csproj",
-        "packagesPath": "C:\\Users\\jamix\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jamix\\OneDrive\\Documents\\GitHub\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\obj\\",
+        "projectPath": "L:\\Source\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\EncoderMouseConfig.csproj",
+        "packagesPath": "C:\\Users\\Bake\\.nuget\\packages\\",
+        "outputPath": "L:\\Source\\Encoder-Mouse\\encoder_mouse_utility\\EncoderMouseConfig\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\jamix\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bake\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,8 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://tasb-it.pkgs.visualstudio.com/_packaging/TASB_Nuget_Feed/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0-windows7.0": {
@@ -62,7 +61,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.106\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
