@@ -1,0 +1,60 @@
+{"Pins":{"Encoder1":{"Pin1":2,"Pin2":3},"Encoder2":{"Pin1":4,"Pin2":5},"Buttons":{"Pin1":6,"Pin2":7,"Pin3":8,"Pin4":9,"Pin5":13,"Pin6":10,"Pin7":11,"Pin8":12},"Slowmo":0},
+"Actions":{
+    "Button1":{
+        "Layer1":{"Down": "m.press(Mouse.LEFT_BUTTON)", "Up": "m.release(Mouse.LEFT_BUTTON)"},
+        "Layer2":{"Down": "", "Up": ""},
+        "Layer3":{"Down": "", "Up": ""},
+        "Layer4":{"Down": "", "Up": ""},
+        "Layer5":{"Down": "", "Up": ""},
+    },
+    "Button2":{
+        "Layer1":{"Down": "", "Up": ""},
+        "Layer2":{"Down": "", "Up": ""},
+        "Layer3":{"Down": "", "Up": ""},
+        "Layer4":{"Down": "", "Up": ""},
+        "Layer5":{"Down": "", "Up": ""},
+    },
+    "Button3":{
+        "Layer1":{"Down": "Layer = 3", "Up": "Layer = 1"},
+        "Layer2":{"Down": "", "Up": "Layer = 1"},
+        "Layer3":{"Down": "", "Up": "Layer = 1"},
+        "Layer4":{"Down": "", "Up": "Layer = 1"},
+        "Layer5":{"Down": "", "Up": "Layer = 1"},
+    },
+    "Button4":{
+        "Layer1":{"Down": "Layer = 4", "Up": "Layer = 1"},
+        "Layer2":{"Down": "", "Up": "Layer = 1"},
+        "Layer3":{"Down": "", "Up": "Layer = 1"},
+        "Layer4":{"Down": "", "Up": "Layer = 1"},
+        "Layer5":{"Down": "", "Up": "Layer = 1"},
+    },
+    "Button5":{
+        "Layer1":{"Down": "m.press(Mouse.RIGHT_BUTTON)", "Up": "m.release(Mouse.RIGHT_BUTTON)"},
+        "Layer2":{"Down": "", "Up": ""},
+        "Layer3":{"Down": "cc.send(ConsumerControlCode.MUTE)", "Up": ""},
+        "Layer4":{"Down": "microcontroller.reset()", "Up": ""},
+        "Layer5":{"Down": "", "Up": ""},
+    },
+    "Button6":{
+        "Layer1":{"Down": "Layer = 2", "Up": "Layer = 1"},
+        "Layer2":{"Down": "", "Up": "Layer = 1"},
+        "Layer3":{"Down": "cc.send(ConsumerControlCode.PLAY_PAUSE)", "Up": "Layer = 1"},
+        "Layer4":{"Down": "kb.send(Keycode.ALT,Keycode.TAB)", "Up": "Layer = 1"},
+        "Layer5":{"Down": "", "Up": "Layer = 1"},
+    },
+    "Button7":{
+        "Layer1":{"Down": "cc.send(0x0224)", "Up": ""},
+        "Layer2":{"Down": "kb.send(Keycode.CONTROL,Keycode.C)", "Up": ""},
+        "Layer3":{"Down": "cc.send(ConsumerControlCode.SCAN_PREVIOUS_TRACK)", "Up": ""},
+        "Layer4":{"Down": "", "Up": ""},
+        "Layer5":{"Down": "", "Up": ""},
+    },
+    "Button8":{
+        "Layer1":{"Down": "cc.send(0x0225)", "Up": ""},
+        "Layer2":{"Down": "kb.send(Keycode.CONTROL,Keycode.V)", "Up": ""},
+        "Layer3":{"Down": "cc.send(ConsumerControlCode.SCAN_NEXT_TRACK)", "Up": ""},
+        "Layer4":{"Down": "", "Up": ""},
+        "Layer5":{"Down": "", "Up": ""},
+    }
+}
+}

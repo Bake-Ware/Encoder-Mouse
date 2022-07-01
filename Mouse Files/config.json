@@ -1,0 +1,241 @@
+{
+  "Pins": {
+    "Encoder1": {
+      "Pin1": 3,
+      "Pin2": 2
+    },
+    "Encoder2": {
+      "Pin1": 4,
+      "Pin2": 5
+    },
+    "Buttons": {
+      "Pin1": 10,
+      "Pin2": 11,
+      "Pin3": 12,
+      "Pin4": 13,
+      "Pin5": 9,
+      "Pin6": 8,
+      "Pin7": 7,
+      "Pin8": 6
+    },
+    "Slowmo": 0
+  },
+  "Actions": {
+    "Button1": {
+      "Layer1": {
+        "Index": 2,
+        "Up": "m.release(Mouse.LEFT_BUTTON)",
+        "Down": "m.press(Mouse.LEFT_BUTTON)"
+      },
+      "Layer2": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      },
+      "Layer3": {
+        "Index": 26,
+        "Up": "",
+        "Down": "cc.send(ConsumerControlCode.VOLUME_INCREMENT)"
+      },
+      "Layer4": {
+        "Index": 19,
+        "Up": "kb.release(Keycode.LEFT_ARROW)",
+        "Down": "kb.press(Keycode.LEFT_ARROW)"
+      },
+      "Layer5": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      }
+    },
+    "Button2": {
+      "Layer1": {
+        "Index": 4,
+        "Up": "m.release(Mouse.MIDDLE_BUTTON)",
+        "Down": "m.press(Mouse.MIDDLE_BUTTON)"
+      },
+      "Layer2": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      },
+      "Layer3": {
+        "Index": 27,
+        "Up": "",
+        "Down": "cc.send(ConsumerControlCode.VOLUME_DECREMENT)"
+      },
+      "Layer4": {
+        "Index": 18,
+        "Up": "kb.release(Keycode.DOWN_ARROW)",
+        "Down": "kb.press(Keycode.DOWN_ARROW)"
+      },
+      "Layer5": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      }
+    },
+    "Button3": {
+      "Layer1": {
+        "Index": 10,
+        "Up": "Layer = 1",
+        "Down": "Layer = 3"
+      },
+      "Layer2": {
+        "Index": 32,
+        "Up": "",
+        "Down": "kb.send(Keycode.GUI,Keycode.LEFT_ARROW)"
+      },
+      "Layer3": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      },
+      "Layer4": {
+        "Index": 20,
+        "Up": "kb.release(Keycode.RIGHT_ARROW)",
+        "Down": "kb.press(Keycode.RIGHT_ARROW)"
+      },
+      "Layer5": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      }
+    },
+    "Button4": {
+      "Layer1": {
+        "Index": 11,
+        "Up": "Layer = 1",
+        "Down": "Layer = 4"
+      },
+      "Layer2": {
+        "Index": 33,
+        "Up": "",
+        "Down": "kb.send(Keycode.GUI,Keycode.RIGHT_ARROW)"
+      },
+      "Layer3": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      },
+      "Layer4": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      },
+      "Layer5": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      }
+    },
+    "Button5": {
+      "Layer1": {
+        "Index": 3,
+        "Up": "m.release(Mouse.RIGHT_BUTTON)",
+        "Down": "m.press(Mouse.RIGHT_BUTTON)"
+      },
+      "Layer2": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      },
+      "Layer3": {
+        "Index": 22,
+        "Up": "",
+        "Down": "cc.send(ConsumerControlCode.MUTE)"
+      },
+      "Layer4": {
+        "Index": 37,
+        "Up": "",
+        "Down": "microcontroller.reset()"
+      },
+      "Layer5": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      }
+    },
+    "Button6": {
+      "Layer1": {
+        "Index": 9,
+        "Up": "Layer = 1",
+        "Down": "Layer = 2"
+      },
+      "Layer2": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      },
+      "Layer3": {
+        "Index": 23,
+        "Up": "",
+        "Down": "cc.send(ConsumerControlCode.PLAY_PAUSE)"
+      },
+      "Layer4": {
+        "Index": 17,
+        "Up": "kb.release(Keycode.UP_ARROW)",
+        "Down": "kb.press(Keycode.UP_ARROW)"
+      },
+      "Layer5": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      }
+    },
+    "Button7": {
+      "Layer1": {
+        "Index": 5,
+        "Up": "",
+        "Down": "cc.send(0x0224)"
+      },
+      "Layer2": {
+        "Index": 14,
+        "Up": "",
+        "Down": "kb.send(Keycode.CONTROL,Keycode.C)"
+      },
+      "Layer3": {
+        "Index": 25,
+        "Up": "",
+        "Down": "cc.send(ConsumerControlCode.SCAN_PREVIOUS_TRACK)"
+      },
+      "Layer4": {
+        "Index": 31,
+        "Up": "",
+        "Down": "kb.send(Keycode.ALT,Keycode.TAB)"
+      },
+      "Layer5": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      }
+    },
+    "Button8": {
+      "Layer1": {
+        "Index": 6,
+        "Up": "",
+        "Down": "cc.send(0x0225)"
+      },
+      "Layer2": {
+        "Index": 15,
+        "Up": "",
+        "Down": "kb.send(Keycode.CONTROL,Keycode.V)"
+      },
+      "Layer3": {
+        "Index": 24,
+        "Up": "",
+        "Down": "cc.send(ConsumerControlCode.SCAN_NEXT_TRACK)"
+      },
+      "Layer4": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      },
+      "Layer5": {
+        "Index": 0,
+        "Up": "Layer = 1",
+        "Down": ""
+      }
+    }
+  }
+}
